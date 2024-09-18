@@ -10,7 +10,8 @@ class NotesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-        itemBuilder: (context, index) => CustomNoteItem(color: myColors[index]),
+        itemBuilder: (context, index) =>
+            const CustomNoteItem(color: Colors.grey),
         itemCount: 9,
         separatorBuilder: (context, index) => const SizedBox(
           height: 10,
@@ -19,15 +20,3 @@ class NotesListView extends StatelessWidget {
     );
   }
 }
-
-List<Color> myColors = [
-  Colors.orange,
-  Colors.blue,
-  Colors.green,
-  Colors.purple,
-  Colors.red,
-  Colors.grey,
-  Colors.teal,
-  Colors.cyan,
-  Colors.blueAccent
-];
