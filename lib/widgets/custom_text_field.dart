@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscure;
   final Widget? prefix;
   final Widget? suffix;
+  final int maxLines;
   final String? Function(String?)? validator;
   final void Function(String?)? onSubmitted;
   final void Function()? ontap;
@@ -24,11 +25,13 @@ class CustomTextField extends StatelessWidget {
     this.ontap,
     this.inputType = TextInputType.text,
     this.readonly = false,
+    this.maxLines = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       style: const TextStyle(color: Colors.white),
       readOnly: readonly,
       validator: validator,
@@ -38,7 +41,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: inputType,
       onTap: ontap,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(50),
+        alignLabelWithHint: true,
         suffixIcon: suffix,
         prefixIcon: prefix,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
