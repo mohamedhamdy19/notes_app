@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
   final void Function()? ontap;
   final TextInputType inputType;
   final bool readonly;
-
+  final void Function(String?)? onSaved;
   const CustomTextField({
     super.key,
     this.controller,
@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.prefix,
     this.suffix,
     this.validator,
+    this.onSaved,
     this.onSubmitted,
     this.ontap,
     this.inputType = TextInputType.text,
@@ -31,10 +32,17 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       maxLines: maxLines,
       style: const TextStyle(color: Colors.white),
       readOnly: readonly,
-      validator: validator,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return "this field is required";
+        } else {
+          return null;
+        }
+      },
       controller: controller,
       obscureText: obscure,
       onFieldSubmitted: onSubmitted,

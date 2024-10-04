@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants/constant.dart';
 
 class CustomAddButton extends StatelessWidget {
-  const CustomAddButton({super.key});
+  final void Function()? onPressed;
+  const CustomAddButton({super.key, required this.onPressed});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +16,7 @@ class CustomAddButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(7),
           ),
           child: MaterialButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: const Text(
               "Add",
               style: TextStyle(
