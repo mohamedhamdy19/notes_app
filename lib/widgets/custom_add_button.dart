@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants/constant_colors.dart';
+import 'package:notes_app/constants/constant.dart';
 
 class CustomAddButton extends StatelessWidget {
   const CustomAddButton({super.key});
