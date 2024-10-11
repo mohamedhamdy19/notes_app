@@ -3,7 +3,10 @@ import 'package:notes_app/constants/constant.dart';
 
 class CustomAddButton extends StatelessWidget {
   final void Function()? onPressed;
-  const CustomAddButton({super.key, required this.onPressed});
+  final bool isLoading;
+  const CustomAddButton(
+      {super.key, required this.onPressed, this.isLoading = false});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,13 +20,21 @@ class CustomAddButton extends StatelessWidget {
           ),
           child: MaterialButton(
             onPressed: onPressed,
-            child: const Text(
-              "Add",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 17,
-              ),
-            ),
+            child: isLoading
+                ? const SizedBox(
+                    height: 26,
+                    width: 26,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  )
+                : const Text(
+                    "Add",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                    ),
+                  ),
           )),
     );
   }
