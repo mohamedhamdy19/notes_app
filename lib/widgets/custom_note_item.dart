@@ -17,7 +17,9 @@ class CustomNoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (content) {
-          return const EditNoteView();
+          return EditNoteView(
+            note: note,
+          );
         }));
       },
       child: Container(
@@ -43,7 +45,7 @@ class CustomNoteItem extends StatelessWidget {
                   child: Text(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 4,
-                    note.subtitle,
+                    note.content,
                     style: TextStyle(
                         color: Colors.black.withOpacity(0.5), fontSize: 18),
                   ),
