@@ -5,6 +5,7 @@ import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_add_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
+import 'package:notes_app/widgets/random_color_maker.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -54,7 +55,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         title: title!,
                         content: content!,
                         date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-                        color: const Color.fromARGB(255, 170, 95, 90).value);
+                        color: getRandomColor());
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     setState(() {
